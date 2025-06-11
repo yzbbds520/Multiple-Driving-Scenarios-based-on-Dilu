@@ -50,17 +50,6 @@ ACTIONS_DESCRIPTION = {
     4: 'Deceleration - decelerate the vehicle'
 }
 
-# Logic in `availableActionsDescription` method:
-def availableActionsDescription(self) -> str:
-    avaliableActionDescription = 'Your available actions are: \n'
-    availableActions = self.env.get_available_actions()
-    for action in availableActions:
-        avaliableActionDescription += ACTIONS_DESCRIPTION[action] + ' Action_id: ' + str(
-            action) + '\n'
-    return avaliableActionDescription
-Use code with caution.
-Python
----
 
 ### 文件 2: `2_Reflection_Prompt.md`
 
@@ -128,7 +117,7 @@ Now, please perform your analysis on the provided case.
 Use code with caution.
 ---
 
-### 文件 3: `3_Output_Correction_Prompt.md`
+文件 3: `3_Output_Correction_Prompt.md`
 
 ```markdown
 # Prompt for the Output Format Correction Agent
