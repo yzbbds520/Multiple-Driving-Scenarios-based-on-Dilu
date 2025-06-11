@@ -2,7 +2,7 @@
 
 We would like to express our sincere gratitude to Licheng Wen and the other authors of the Dilu project for generously open-sourcing their code. Our research builds upon their foundational work by expanding the scope to a broader range of driving scenarios. We hope that sharing these prompts will be beneficial to the research community.
 
-For the specific implementation details of the agent and simulation loop, please refer to the original **[Dilu GitHub repository](https://github.com/georgewen2000/DiLU)**.
+For the specific implementation details of the agent and simulation loop, please refer to the original **https://pjlab-adg.github.io/DiLu/**.
 
 ## Overview
 
