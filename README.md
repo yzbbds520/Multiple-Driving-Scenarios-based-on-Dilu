@@ -58,5 +58,5 @@ The resulting composite text forms the complete prompt that is sent to the LLM f
 If you find these prompts useful in your research, we would appreciate a citation to our paper.
 
 ```
-[Your Paper Information Here, e.g., BibTeX entry]
+[Efficacy...]
 ```
