@@ -1,4 +1,4 @@
-Example A: Avoiding a Risky Lane Change
+#### Example A: Avoiding a Risky Lane Change
 
 In this scenario, the agent must deal with a rapidly decelerating car in its own lane. A naive agent might try to change lanes, but this memory guides it to consider the adjacent lane's traffic more carefully.
 
@@ -30,7 +30,7 @@ Use code with caution.
 Analysis: Here, the model recalls a past error related to a risky lane change. It applies that lesson to correctly identify that while the car ahead (264) is a hazard, the proposed solution (changing left) is even more dangerous due to Car 168. It incorrectly chooses to remain at speed (Action 1) in the reasoning but the logic points towards deceleration being the better choice. This itself is an interesting finding for a paper.
 
 
-Example B: Prioritizing Deceleration due to Closing Speed
+#### Example B: Prioritizing Deceleration due to Closing Speed
 
 This example teaches the agent to be more sensitive to the closing speed with the vehicle directly ahead.
 
