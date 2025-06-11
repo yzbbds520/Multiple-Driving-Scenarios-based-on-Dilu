@@ -1,16 +1,12 @@
 Example A: Avoiding a Risky Lane Change
-示例 A：避免危险的变道
 In this scenario, the agent must deal with a rapidly decelerating car in its own lane. A naive agent might try to change lanes, but this memory guides it to consider the adjacent lane's traffic more carefully.
-在这个场景中，智能体必须处理自己车道内快速减速的汽车。一个简单的智能体可能会尝试变道，但这段记忆指导它更仔细地考虑相邻车道的交通情况。
-Human Message (Input)  人类消息（输入）
+Human Message (Input)
 {
     "human_question": "Above messages are some examples of how you successfully made decisions in the past. These scenarios are similar to the current one. Refer to those examples to make a decision for the current scenario.current scenarios descriptions are attached as below:#### Driving scenario description:You are driving on a 4-lane highway, occupying the third lane from the left.You are located at coordinates (283.64, 8.00). Your vehicle is moving at 20.00 m/s with an acceleration of -0.00 m/s^2. Your lateral position within the lane is 283.64 m.Other vehicles are driving around you, and below is their basic information:- Car 168 is driving on the lane to your left and is ahead of you. The position of it is (285.92, 4.00), speed is 16.69 m/s, acceleration is -0.09 m/s^2, and lane position is 285.92 m.- Car 736 is driving on the lane to your right and is behind of you. The position of it is (276.45, 12.00), speed is 15.37 m/s, acceleration is -0.00 m/s^2, and lane position is 276.45 m.- Car 840 is driving on the lane to your right and is ahead of you. The position of it is (313.58, 12.00), speed is 15.98 m/s, acceleration is 0.37 m/s^2, and lane position is 313.58 m.- Car 264 is driving on the same lane as you and is ahead of you. The position of it is (315.00, 8.00), speed is 13.32 m/s, acceleration is -1.75 m/s^2, and lane position is 315.00 m.#### Available actions:Your available actions are: REMAIN - remain in the current lane with current speed Action_id: 1, Turn-left - change lane to the left of the current lane Action_id: 0, Turn-right - change lane to the right of the current lane Action_id: 2, Acceleration - accelerate the vehicle Action_id: 3#### Driving Intentions:Keep safe and avoid collisons"
 }
 Use code with caution.
-谨慎使用代码。
 Json
 Model's Response (Output)
-模型的响应（输出）
 #### I have made a misake before and below is my self-reflection:
 My reasoning process was the incorrect assessment of the safety of changing lanes to the left. While it correctly identified Car 264 as a significant concern due to its rapid deceleration, it overlooked the proximity and relative speed of Car 168 in the left lane. Car 168 is moving slower and is very close, which makes changing lanes to the left a risky maneuver. Additionally, the reasoning did not adequately consider the relative positions and speeds of all surrounding vehicles to ensure a safe lane change.
 #### What should I do to avoid such errors in the future:
@@ -28,23 +24,16 @@ Car 264 is ahead in the same lane, moving much slower at 13.32 m/s and decelerat
 Given the situation, changing lanes to the left is risky due to the proximity of Car 168. The safer option is to remain in the current lane and decelerate to match the speed of Car 264 ahead, ensuring a safe following distance.
 Response to user:#### 1
 Use code with caution.
-谨慎使用代码。
 Analysis: Here, the model recalls a past error related to a risky lane change. It applies that lesson to correctly identify that while the car ahead (264) is a hazard, the proposed solution (changing left) is even more dangerous due to Car 168. It incorrectly chooses to remain at speed (Action 1) in the reasoning but the logic points towards deceleration being the better choice. This itself is an interesting finding for a paper.
-分析：在这里，模型回忆起过去与危险变道相关的错误。它将这个教训应用于正确识别，虽然前方的车（264）是危险，但建议的解决方案（向左变道）由于车 168 而更加危险。它在推理中错误地选择保持速度（动作 1），但逻辑表明减速是更好的选择。这本身就是一个对论文来说有趣的发现。
-
 Example B: Prioritizing Deceleration due to Closing Speed
-示例 B：因接近速度而优先减速
 This example teaches the agent to be more sensitive to the closing speed with the vehicle directly ahead.
-这个示例教导代理对直接前方的车辆接近速度更加敏感。
-Human Message (Input)  人类消息（输入）
+Human Message (Input)
 {
     "human_question": "Above messages are some examples of how you successfully made decisions in the past. These scenarios are similar to the current one. Refer to those examples to make a decision for the current scenario.\n\ncurrent scenarios descriptions are attached as below:\n#### Driving scenario description:\nYou are driving on a 4-lane highway, occupying the third lane from the left.You are located at coordinates (416.20, 8.00). Your vehicle is moving at 20.09 m/s with an acceleration of -0.16 m/s^2. Your lateral position within the lane is 416.20 m.\nOther vehicles are driving around you, and below is their basic information:\n- Car 960 is driving on the lane to your left and is behind of you. The position of it is (411.47, 4.00), speed is 16.73 m/s, acceleration is -0.39 m/s^2, and lane position is 411.47 m.\n- Car 584 is driving on the lane to your right and is ahead of you. The position of it is (421.52, 12.00), speed is 19.58 m/s, acceleration is 0.11 m/s^2, and lane position is 421.52 m.\n- Car 64 is driving on the same lane as you and is ahead of you. The position of it is (422.20, 8.00), speed is 17.39 m/s, acceleration is 0.14 m/s^2, and lane position is 422.20 m.\n... (other cars) ...\n#### Available actions:\nYour available actions are: \nREMAIN - remain in the current lane with current speed Action_id: 1\nTurn-left - change lane to the left of the current lane Action_id: 0\nTurn-right - change lane to the right of the current lane Action_id: 2\nAcceleration - accelerate the vehicle Action_id: 3\nDeceleration - decelerate the vehicle Action_id: 4\n\n#### Driving Intentions:\nKeep safe and avoid collisons\n\n"
 }
 Use code with caution.
-谨慎使用代码。
 Json
 Model's Response (Output)
-模型的回应（输出）
 #### I have made a misake before and below is my self-reflection:
 My reasoning process was the underestimation of the proximity and relative speed of Car 64, which is directly ahead in the same lane. While I acknowledged the slower speed of Car 64, I did not adequately consider the potential for a collision due to the closing speed... The decision to remain in the current lane without adjusting speed or considering a lane change ignores the risk of rear-ending Car 64.
 #### What should I do to avoid such errors in the future:
@@ -61,6 +50,4 @@ Given the current situation, the best course of action is to decelerate to maint
 
 Response to user:#### 4
 Use code with caution.
-谨慎使用代码。
 Analysis: In this case, the agent reflects on a past failure of underestimating closing speed. It applies this lesson to the current scenario, identifying the vehicle ahead (Car 64) as the primary hazard and correctly choosing to decelerate (Action 4) to maintain a safe following distance.
-分析：在这种情况下，代理反思了过去低估关闭速度的失败。它将这个教训应用于当前场景，识别出前方的车辆（Car 64）是主要危险，并正确选择减速（Action 4）以保持安全车距。
