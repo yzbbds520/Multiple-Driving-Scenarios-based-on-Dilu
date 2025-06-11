@@ -1,4 +1,4 @@
-# This is the corresponding ideal reasoning for the above scenario.
+# This is the corresponding ideal reasoning for the Few-Shot Examples.
 example_answer = f"""
 Well, I have 5 actions to choose from. Now, I would like to know which action is possible. 
 I should first check if I can acceleration, then idle, finally decelerate. I can also try to change lanes but with caution and not too frequently.
